@@ -1,22 +1,30 @@
-module "amplify" {
-  source                 = "../modules/amplify"
-  app_name               = "my-nextjs-app"
-  repository             = "https://github.com/my-org/my-nextjs-app"
-  branch                 = "main"
-  oauth_token            = "your-oauth-token"
-  build_spec_file        = "amplify.yml"
-  custom_rules           = []
-  environment_variables  = {
-    NEXT_PUBLIC_API_URL = "https://api.example.com"
-  }
-  tags = {
-    Environment = "dev"
-    Project     = "my-project"
-  }
-  auto_build                   = true
-  auto_branch_creation_patterns = ["feature/*", "bugfix/*"]
-  basic_auth_credentials       = null
-  enable_basic_auth            = false
-  route53_zone_id              = "Z1234567890ABCDEF"
-  domain_name                  = "app.example.com"
+provider "aws" {
+  region = var.region
 }
+
+module "amplify" {
+  source              = "../modules/amplify"
+  app_name            = var.app_name
+  repository          = var.repository
+  github_token        = var.github_token
+  build_spec_file     = var.build_spec_file
+  environment_variables = var.environment_variables
+  custom_rules        = var.custom_rules
+  tags                = var.tags
+}
+
+# module "route53" {
+#   source       = "../modules/route53"
+#   domain_name  = var.domain_name
+#   record_name  = var.record_name
+#   record_value = var.record_value
+#   tags         = var.tags
+# }
+
+# output "route53_zone_id" {
+#   value = module.route53.zone_id
+# }
+
+# output "route53_record_id" {
+#   value = module.route53.record_id
+# }

@@ -4,16 +4,17 @@ variable "domain_name" {
 }
 
 variable "record_name" {
-  description = "The name of the DNS record"
+  description = "The name of the Route 53 record"
   type        = string
 }
 
 variable "record_value" {
-  description = "The value of the DNS record"
+  description = "The value of the Route 53 record"
   type        = string
 }
 
 variable "tags" {
-  description = "Tags for the resources"
+  description = "Tags to apply to the resources"
   type        = map(string)
+  default     = {}
 }
