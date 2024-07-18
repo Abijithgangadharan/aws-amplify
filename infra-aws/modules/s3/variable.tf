@@ -74,3 +74,19 @@
 #   type        = bool
 #   default     = true
 # }
+
+
+variable "bucket_name" {
+  description = "The name of the S3 bucket"
+  type        = string
+}
+
+variable "s3_key" {
+  description = "The key of the object to be uploaded"
+  type        = string
+}
+
+variable "lambda_source" {
+  description = "The source file to be uploaded"
+  type        = string
+}

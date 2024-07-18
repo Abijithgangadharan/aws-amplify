@@ -3,33 +3,23 @@ variable "table_name" {
   type        = string
 }
 
-variable "billing_mode" {
-  description = "The billing mode for the DynamoDB table"
-  type        = string
-  default     = "PAY_PER_REQUEST"
-}
-
 variable "hash_key" {
   description = "The name of the hash key"
   type        = string
 }
 
-variable "hash_key_type" {
-  description = "The type of the hash key (S | N | B)"
-  type        = string
-  default     = "S"
+variable "attributes" {
+  description = "A list of attributes for the DynamoDB table"
+  type        = list(object({
+    name = string
+    type = string
+  }))
 }
 
-variable "range_key" {
-  description = "The name of the range key"
+variable "billing_mode" {
+  description = "The billing mode for the DynamoDB table"
   type        = string
-  default     = null
-}
-
-variable "range_key_type" {
-  description = "The type of the range key (S | N | B)"
-  type        = string
-  default     = "S"
+  default     = "PAY_PER_REQUEST"
 }
 
 variable "tags" {

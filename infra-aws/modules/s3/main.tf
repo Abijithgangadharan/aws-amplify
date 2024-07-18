@@ -45,3 +45,20 @@
 #   ignore_public_acls      = var.ignore_public_acls
 #   restrict_public_buckets = var.restrict_public_buckets
 # }
+
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_object" "lambda_code" {
+  bucket = aws_s3_bucket.bucket.bucket
+  key    = var.s3_key
+  source = var.lambda_source
+  etag   = filemd5(var.lambda_source)
+}
+
+output "bucket_name" {
+  value = aws_s3_bucket.bucket.bucket
+}
