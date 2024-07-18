@@ -12,19 +12,3 @@ module "amplify" {
   custom_rules        = var.custom_rules
   tags                = var.tags
 }
-
-# module "route53" {
-#   source       = "../modules/route53"
-#   domain_name  = var.domain_name
-#   record_name  = var.record_name
-#   record_value = var.record_value
-#   tags         = var.tags
-# }
-
-# output "route53_zone_id" {
-#   value = module.route53.zone_id
-# }
-
-# output "route53_record_id" {
-#   value = module.route53.record_id
-# }
