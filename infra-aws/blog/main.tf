@@ -28,3 +28,12 @@ module "amplify" {
 # output "route53_record_id" {
 #   value = module.route53.record_id
 # }
+
+terraform {
+  backend "s3" {
+    bucket         = "service-terraform-state-backend"
+    key            = "blog.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "blog_state"
+  }
+}

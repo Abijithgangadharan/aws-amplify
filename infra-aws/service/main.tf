@@ -5,9 +5,9 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket         = "service-terraform-state-backend"
-    key            = "terraform.tfstate"
+    key            = "service.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "terraform_state"
+    dynamodb_table = "service_state"
   }
 }
 
