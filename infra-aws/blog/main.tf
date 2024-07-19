@@ -12,3 +12,12 @@ module "amplify" {
   custom_rules        = var.custom_rules
   tags                = var.tags
 }
+
+terraform {
+  backend "s3" {
+    bucket         = "service-terraform-state-backend"
+    key            = "blog.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "blog_state"
+  }
+}

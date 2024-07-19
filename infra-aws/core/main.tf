@@ -47,3 +47,12 @@ module "dynamodb" {
 #   ignore_public_acls      = true
 #   restrict_public_buckets = true
 # }
+
+terraform {
+  backend "s3" {
+    bucket         = "service-terraform-state-backend"
+    key            = "core.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "core_state"
+  }
+}

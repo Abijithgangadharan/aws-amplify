@@ -2,6 +2,16 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "service-terraform-state-backend"
+    key            = "service.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "service_state"
+  }
+}
+
+
 module "s3_bucket" {
   source = "../modules/s3"
 
