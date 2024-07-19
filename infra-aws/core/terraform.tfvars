@@ -1,6 +1,6 @@
 domain_name  = "yourdomain.com"
 record_name  = "dev.yourdomain.com"
-record_value = "https://dev.dg9b5dqph4374.amplifyapp.com"
+record_value = "https://main.d19s81456txlac.amplifyapp.com/"
 tags = {
   Environment = "production"
   Project     = "core"
